@@ -193,7 +193,7 @@ Using the Azure Search service created in the previous lab, you will use the "Im
 
   + Name your index as `myportalindex`
 
-  + **Keep `metada_storage_path` as the key.** This is a unique identifier for each file of the data source. It is a good idea to use the physical path of file, since it is unique by design. Since our dataset is on blob storage, the content of this field is the file URL, that's why it is unique by design. If you check the other options, you will see that metadata_storage_path is only one field that can guarantee uniqueness. As of December 2018, the key maximum size is 1024 characters. This limit won't be a problem for this training, but the workaround is to reduce the file name length and also the path. This limit is currently under analysis of the product team.
+  + **Keep `metadata_storage_path` as the key.** This is a unique identifier for each file of the data source. It is a good idea to use the physical path of file, since it is unique by design. Since our dataset is on blob storage, the content of this field is the file URL, that's why it is unique by design. If you check the other options, you will see that metadata_storage_path is only one field that can guarantee uniqueness. As of December 2018, the key maximum size is 1024 characters. This limit won't be a problem for this training, but the workaround is to reduce the file name length and also the path. This limit is currently under analysis of the product team.
 
   + Name the **Suggester** as `myportalsuggester` and set the **Search Mode** to **"analyzingInfixMatching".** The Suggester feature provides type-ahead suggestions, as you can see in web search engines like [Bing](www.bing.com).
 
@@ -259,7 +259,7 @@ As you can see, not all fields should be retrievable or filterable and son on. W
 + You can change the target Index
 + You can schedule your Indexer again
 + You can check "Advanced Options". Click this option to see:
-  + Base-64 Encode Keys. This is the algorithm used encrypt the data of your index key. It is the default option of the Index creation and this encryption avoids a typical problem of the metadata_storage_path, our recommended field for the documents key, as mentioned in the previous step. The storage path will have characters like "/" that are not allowed in a key. That's a **paradox**, we "have to use" metadata_storage_path but typically it has invalid characters. The Base-64 encryption fixes this problem. It also means that the data within the Azure Search Index is protected and your app needs to decrypt it to read in "human format".
+  + Base-64 Encode Keys. This is the algorithm used to encode the data of your index key. It is the default option of the Index creation and this encoding avoids a typical problem of the metadata_storage_path, our recommended field for the documents key, as mentioned in the previous step. The storage path will have characters like "/" that are not allowed in a key. That's a **paradox**, we "have to use" metadata_storage_path but typically it has invalid characters. The Base-64 encoding fixes this problem. It also means that the data within the Azure Search Index is protected and your app needs to decrypt it to read in "human format".
   + You will also see options for max errors per execution, items per execution, execution size and so on.
   + Note that you can change the "Data to extract" and the "Parsing mode" options.
 
